@@ -1,11 +1,5 @@
 # react-native-app project
-Open your project in an IDE. After that we have to add IP address of our machine to run the APIs in the project. 
-In the project find folder -> Screens. 
-In Screens folder go to Invoice.js file and add your ip address by editing line no 8
-In Screens folder go to Payment.js file and add your ip address by editing line no 37
-
-```
-const ipAddress = '192.168.43.148';
+Open your project in an IDE. 
 ```
 	
 To run the application in the android emulator we have to set up the android studio and android emulator. 

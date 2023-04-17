@@ -5,7 +5,8 @@ const List = ({navigation}) => {
   const [data, setData] = useState([]);
   const getAPIData = async () => {
     try {
-      const url = 'http://192.168.43.148:3000/all_invoices';
+      const ipAddress = '192.168.43.148';
+      const url = 'http://' + ipAddress + ':3000/all_invoices';
       const result = await axios.get(url);
       console.log(result.data);
       setData(result.data);

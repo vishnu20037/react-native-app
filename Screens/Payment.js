@@ -10,13 +10,14 @@ import React, {useState} from 'react';
 import axios from 'axios';
 const Payment = ({navigation, route}) => {
   const [amount, setAmount] = useState({amount: 0});
-  const [amountText, setAmountText] = useState(route.params.pendingAmount);
   const [method, setMethod] = useState('');
   const billNo = route.params.billNo;
   const retailerName = route.params.retailerName;
   const pendingAmount = route.params.pendingAmount;
-  const payments = route.params.payments;
   let defaultAmount = '';
+  defaultAmount = defaultAmount + pendingAmount;
+  const [amountText, setAmountText] = useState(defaultAmount);
+  const payments = route.params.payments;
   const date = new Date();
   let currentDate = `${String(date.getDate()).padStart(2, '0')}/${String(
     date.getMonth() + 1,
@@ -31,10 +32,11 @@ const Payment = ({navigation, route}) => {
     },
   ];
   updatedPayments = updatedPayments.concat(payments);
-  defaultAmount = defaultAmount + pendingAmount;
   const updateData = async (qParam, data) => {
     try {
-      const url = 'http://192.168.43.148:3000/update_invoice?billNo=' + qParam;
+      const ipAddress = '192.168.43.148';
+      const url =
+        'http://' + ipAddress + ':3000/update_invoice?billNo=' + qParam;
       const result = await axios({
         method: 'put',
         url: url,
@@ -57,7 +59,7 @@ const Payment = ({navigation, route}) => {
               keyboardType="numeric"
               style={styles.input}
               defaultValue={defaultAmount}
-              autoFocus={true}
+              autoFocus={false}
               value={amountText}
               onChangeText={text => {
                 setAmountText(text);

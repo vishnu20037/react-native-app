@@ -34,9 +34,9 @@ const Payment = ({navigation, route}) => {
   updatedPayments = updatedPayments.concat(payments);
   const updateData = async (qParam, data) => {
     try {
-      const ipAddress = '192.168.43.148';
       const url =
-        'http://' + ipAddress + ':3000/update_invoice?billNo=' + qParam;
+        'https://ea30-2409-4052-4e13-46b1-cc0c-9d58-da8a-7666.ngrok-free.app/update_invoice?billNo=' +
+        qParam;
       const result = await axios({
         method: 'put',
         url: url,
@@ -230,19 +230,15 @@ const styles = StyleSheet.create({
   methods: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: 12,
+    paddingHorizontal: 12,
     marginTop: 51,
-  },
-  separator: {
-    marginVertical: 8,
-    borderBottomColor: '#3A3A3A',
-    borderBottomWidth: StyleSheet.hairlineWidth,
   },
   textcard: {
     borderRadius: 12,
     width: 120,
     height: 160,
     borderWidth: 1,
+    paddingHorizontal: 6,
   },
   pressedCard: {
     backgroundColor: '#DFE8F4',

@@ -5,8 +5,8 @@ const List = ({navigation}) => {
   const [data, setData] = useState([]);
   const getAPIData = async () => {
     try {
-      const ipAddress = '192.168.43.148';
-      const url = 'http://' + ipAddress + ':3000/all_invoices';
+      const url =
+        'https://ea30-2409-4052-4e13-46b1-cc0c-9d58-da8a-7666.ngrok-free.app/all_invoices';
       const result = await axios.get(url);
       console.log(result.data);
       setData(result.data);
